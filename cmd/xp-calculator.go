@@ -210,6 +210,7 @@ func getLevelFromExperiencePoints(levelType, experiencePoints int) (int, int, in
 	_ = experiencesToNextLevel
 
 	switch levelType {
+	// heroic low TR
 	case 1:
 		for i := len(heroicLevelsLowTR) - 1; i >= 0; i-- {
 			if heroicLevelsLowTR[i].Rank0 <= experiencePoints {
@@ -218,9 +219,13 @@ func getLevelFromExperiencePoints(levelType, experiencePoints int) (int, int, in
 				break
 			}
 		}
+	// heroic mid TR
 	case 2:
+	// heroic high TR
 	case 3:
+	// epic
 	case 4:
+	// legendary
 	case 5:
 	default:
 		fmt.Println("Invalid level type")
@@ -247,6 +252,8 @@ func main() {
 		switch reincarnationsStatus {
 		case 1:
 			fmt.Println("You have chosen Heroic Level with 0-3 true reincarnations and", experiencePoints, "experience points.")
+			characterLevel, _, _ := getLevelFromExperiencePoints(levelType, experiencePoints)
+			fmt.Println("Your character level is:", characterLevel)
 		case 2:
 			fmt.Println("You have chosen Heroic Level with 4-6 true reincarnations and", experiencePoints, "experience points.")
 		case 3:
