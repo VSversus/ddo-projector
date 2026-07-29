@@ -201,36 +201,38 @@ func getExperiencePoints() int {
 	}
 }
 
-func getLevelFromExperiencePoints(levelType, experiencePoints int) (int, int, int) {
+func getLevelFromExperiencePoints(levels []LevelData, experiencePoints int) (int, int, int) {
 	var characterLevel int
-	_ = characterLevel
-	var rank int
-	_ = rank
+	var characterRank int
 	var experiencesToNextLevel int
-	_ = experiencesToNextLevel
 
-	switch levelType {
-	// heroic low TR
-	case 1:
-		for i := len(heroicLevelsLowTR) - 1; i >= 0; i-- {
-			if heroicLevelsLowTR[i].Rank0 <= experiencePoints {
-				characterLevel = heroicLevelsLowTR[i].Level
-				// todo implement rank and experiencesToNextLevel calculation
-				break
+	// Determine character level based on experience points
+	for i := len(levels) - 1; i >= 0; i-- {
+		if levels[i].Rank0 <= experiencePoints {
+			characterLevel = levels[i].Level
+			// Determine experiences needed for next level
+			if i < len(levels)-1 {
+				experiencesToNextLevel = levels[i+1].Rank0 - experiencePoints
+			} else {
+				experiencesToNextLevel = 0 // Max level reached, no more XP needed for next level
 			}
+			// Determine rank based on experience points
+			if experiencePoints < levels[i].Rank1 {
+				characterRank = 0
+			} else if experiencePoints < levels[i].Rank2 {
+				characterRank = 1
+			} else if experiencePoints < levels[i].Rank3 {
+				characterRank = 2
+			} else if experiencePoints < levels[i].Rank4 {
+				characterRank = 3
+			} else {
+				characterRank = 4
+			}
+			break
 		}
-	// heroic mid TR
-	case 2:
-	// heroic high TR
-	case 3:
-	// epic
-	case 4:
-	// legendary
-	case 5:
-	default:
-		fmt.Println("Invalid level type")
 	}
-	return characterLevel, rank, experiencesToNextLevel
+
+	return characterLevel, characterRank, experiencesToNextLevel
 }
 
 func main() {
@@ -252,22 +254,38 @@ func main() {
 		switch reincarnationsStatus {
 		case 1:
 			fmt.Println("You have chosen Heroic Level with 0-3 true reincarnations and", experiencePoints, "experience points.")
-			characterLevel, _, _ := getLevelFromExperiencePoints(levelType, experiencePoints)
+			characterLevel, characterRank, experiencesToNextLevel := getLevelFromExperiencePoints(heroicLevelsLowTR, experiencePoints)
 			fmt.Println("Your character level is:", characterLevel)
+			fmt.Println("Your character rank is:", characterRank)
+			fmt.Println("Experience points needed for next level:", experiencesToNextLevel)
 		case 2:
 			fmt.Println("You have chosen Heroic Level with 4-6 true reincarnations and", experiencePoints, "experience points.")
+			characterLevel, characterRank, experiencesToNextLevel := getLevelFromExperiencePoints(heroicLevelsMidTR, experiencePoints)
+			fmt.Println("Your character level is:", characterLevel)
+			fmt.Println("Your character rank is:", characterRank)
+			fmt.Println("Experience points needed for next level:", experiencesToNextLevel)
 		case 3:
 			fmt.Println("You have chosen Heroic Level with 7 or more true reincarnations and", experiencePoints, "experience points.")
+			characterLevel, characterRank, experiencesToNextLevel := getLevelFromExperiencePoints(heroicLevelsHighTR, experiencePoints)
+			fmt.Println("Your character level is:", characterLevel)
+			fmt.Println("Your character rank is:", characterRank)
+			fmt.Println("Experience points needed for next level:", experiencesToNextLevel)
 		default:
 			fmt.Println("Invalid reincarnations status")
 		}
 	case 2:
 		fmt.Println("You have chosen Epic Level with", experiencePoints, "experience points.")
+		characterLevel, characterRank, experiencesToNextLevel := getLevelFromExperiencePoints(epicLevels, experiencePoints)
+		fmt.Println("Your character level is:", characterLevel)
+		fmt.Println("Your character rank is:", characterRank)
+		fmt.Println("Experience points needed for next level:", experiencesToNextLevel)
 	case 3:
 		fmt.Println("You have chosen Legendary Level with", experiencePoints, "experience points.")
+		characterLevel, characterRank, experiencesToNextLevel := getLevelFromExperiencePoints(legendaryLevels, experiencePoints)
+		fmt.Println("Your character level is:", characterLevel)
+		fmt.Println("Your character rank is:", characterRank)
+		fmt.Println("Experience points needed for next level:", experiencesToNextLevel)
 	default:
 		fmt.Println("Invalid level type")
 	}
-
-	// todo implement the logic to calculate the level based on the inputs
 }
