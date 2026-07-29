@@ -8,104 +8,100 @@ import (
 
 type LevelData struct {
 	Level int
-	Rank0 int
-	Rank1 int
-	Rank2 int
-	Rank3 int
-	Rank4 int
+	Ranks []int
 }
 
 var heroicLevelsLowTR = []LevelData{
-	{Level: 1, Rank0: 0, Rank1: 800, Rank2: 1600, Rank3: 2400, Rank4: 3200},
-	{Level: 2, Rank0: 4000, Rank1: 6400, Rank2: 8800, Rank3: 11200, Rank4: 13600},
-	{Level: 3, Rank0: 16000, Rank1: 20800, Rank2: 25600, Rank3: 30400, Rank4: 35200},
-	{Level: 4, Rank0: 40000, Rank1: 46400, Rank2: 52800, Rank3: 59200, Rank4: 65600},
-	{Level: 5, Rank0: 72000, Rank1: 80000, Rank2: 88000, Rank3: 96000, Rank4: 104000},
-	{Level: 6, Rank0: 112000, Rank1: 121600, Rank2: 131200, Rank3: 140800, Rank4: 150400},
-	{Level: 7, Rank0: 160000, Rank1: 173000, Rank2: 186000, Rank3: 199000, Rank4: 212000},
-	{Level: 8, Rank0: 225000, Rank1: 241000, Rank2: 257000, Rank3: 273000, Rank4: 289000},
-	{Level: 9, Rank0: 305000, Rank1: 324000, Rank2: 343000, Rank3: 362000, Rank4: 381000},
-	{Level: 10, Rank0: 400000, Rank1: 422000, Rank2: 444000, Rank3: 466000, Rank4: 488000},
-	{Level: 11, Rank0: 510000, Rank1: 534000, Rank2: 558000, Rank3: 582000, Rank4: 606000},
-	{Level: 12, Rank0: 630000, Rank1: 656000, Rank2: 682000, Rank3: 708000, Rank4: 734000},
-	{Level: 13, Rank0: 760000, Rank1: 788000, Rank2: 816000, Rank3: 844000, Rank4: 872000},
-	{Level: 14, Rank0: 900000, Rank1: 930000, Rank2: 960000, Rank3: 990000, Rank4: 1020000},
-	{Level: 15, Rank0: 1050000, Rank1: 1082000, Rank2: 1114000, Rank3: 1146000, Rank4: 1178000},
-	{Level: 16, Rank0: 1210000, Rank1: 1243000, Rank2: 1276000, Rank3: 1309000, Rank4: 1342000},
-	{Level: 17, Rank0: 1375000, Rank1: 1409000, Rank2: 1443000, Rank3: 1477000, Rank4: 1511000},
-	{Level: 18, Rank0: 1545000, Rank1: 1580000, Rank2: 1615000, Rank3: 1650000, Rank4: 1685000},
-	{Level: 19, Rank0: 1720000, Rank1: 1756000, Rank2: 1792000, Rank3: 1828000, Rank4: 1864000},
-	{Level: 20, Rank0: 1900000, Rank1: 0, Rank2: 0, Rank3: 0, Rank4: 0},
+	{Level: 1, Ranks: []int{0, 800, 1600, 2400, 3200}},
+	{Level: 2, Ranks: []int{4000, 6400, 8800, 11200, 13600}},
+	{Level: 3, Ranks: []int{16000, 20800, 25600, 30400, 35200}},
+	{Level: 4, Ranks: []int{40000, 46400, 52800, 59200, 65600}},
+	{Level: 5, Ranks: []int{72000, 80000, 88000, 96000, 104000}},
+	{Level: 6, Ranks: []int{112000, 121600, 131200, 140800, 150400}},
+	{Level: 7, Ranks: []int{160000, 173000, 186000, 199000, 212000}},
+	{Level: 8, Ranks: []int{225000, 241000, 257000, 273000, 289000}},
+	{Level: 9, Ranks: []int{305000, 324000, 343000, 362000, 381000}},
+	{Level: 10, Ranks: []int{400000, 422000, 444000, 466000, 488000}},
+	{Level: 11, Ranks: []int{510000, 534000, 558000, 582000, 606000}},
+	{Level: 12, Ranks: []int{630000, 656000, 682000, 708000, 734000}},
+	{Level: 13, Ranks: []int{760000, 788000, 816000, 844000, 872000}},
+	{Level: 14, Ranks: []int{900000, 930000, 960000, 990000, 1020000}},
+	{Level: 15, Ranks: []int{1050000, 1082000, 1114000, 1146000, 1178000}},
+	{Level: 16, Ranks: []int{1210000, 1243000, 1276000, 1309000, 1342000}},
+	{Level: 17, Ranks: []int{1375000, 1409000, 1443000, 1477000, 1511000}},
+	{Level: 18, Ranks: []int{1545000, 1580000, 1615000, 1650000, 1685000}},
+	{Level: 19, Ranks: []int{1720000, 1756000, 1792000, 1828000, 1864000}},
+	{Level: 20, Ranks: []int{1900000, 0, 0, 0, 0}},
 }
 
 var heroicLevelsMidTR = []LevelData{
-	{Level: 1, Rank0: 0, Rank1: 1200, Rank2: 2400, Rank3: 3600, Rank4: 4800},
-	{Level: 2, Rank0: 6000, Rank1: 9600, Rank2: 13200, Rank3: 16800, Rank4: 20400},
-	{Level: 3, Rank0: 24000, Rank1: 31200, Rank2: 38400, Rank3: 45600, Rank4: 52800},
-	{Level: 4, Rank0: 60000, Rank1: 69600, Rank2: 79200, Rank3: 88800, Rank4: 98400},
-	{Level: 5, Rank0: 108000, Rank1: 120000, Rank2: 132000, Rank3: 144000, Rank4: 156000},
-	{Level: 6, Rank0: 168000, Rank1: 182400, Rank2: 196800, Rank3: 211200, Rank4: 225600},
-	{Level: 7, Rank0: 240000, Rank1: 259500, Rank2: 279000, Rank3: 298500, Rank4: 318000},
-	{Level: 8, Rank0: 337500, Rank1: 361500, Rank2: 385500, Rank3: 409500, Rank4: 433500},
-	{Level: 9, Rank0: 457500, Rank1: 486000, Rank2: 514500, Rank3: 543000, Rank4: 571500},
-	{Level: 10, Rank0: 600000, Rank1: 633000, Rank2: 666000, Rank3: 699000, Rank4: 732000},
-	{Level: 11, Rank0: 765000, Rank1: 801000, Rank2: 837000, Rank3: 873000, Rank4: 909000},
-	{Level: 12, Rank0: 945000, Rank1: 984000, Rank2: 1023000, Rank3: 1062000, Rank4: 1101000},
-	{Level: 13, Rank0: 1140000, Rank1: 1182000, Rank2: 1224000, Rank3: 1266000, Rank4: 1308000},
-	{Level: 14, Rank0: 1350000, Rank1: 1395000, Rank2: 1440000, Rank3: 1485000, Rank4: 1530000},
-	{Level: 15, Rank0: 1575000, Rank1: 1623000, Rank2: 1671000, Rank3: 1719000, Rank4: 1767000},
-	{Level: 16, Rank0: 1815000, Rank1: 1864500, Rank2: 1914000, Rank3: 1963500, Rank4: 2013000},
-	{Level: 17, Rank0: 2062500, Rank1: 2113500, Rank2: 2164500, Rank3: 2215500, Rank4: 2266500},
-	{Level: 18, Rank0: 2317500, Rank1: 2370000, Rank2: 2422500, Rank3: 2475000, Rank4: 2527500},
-	{Level: 19, Rank0: 2580000, Rank1: 2634000, Rank2: 2688000, Rank3: 2742000, Rank4: 2796000},
-	{Level: 20, Rank0: 2850000, Rank1: 0, Rank2: 0, Rank3: 0, Rank4: 0}, // heroic XP cap
+	{Level: 1, Ranks: []int{0, 1200, 2400, 3600, 4800}},
+	{Level: 2, Ranks: []int{6000, 9600, 13200, 16800, 20400}},
+	{Level: 3, Ranks: []int{24000, 31200, 38400, 45600, 52800}},
+	{Level: 4, Ranks: []int{60000, 69600, 79200, 88800, 98400}},
+	{Level: 5, Ranks: []int{108000, 120000, 132000, 144000, 156000}},
+	{Level: 6, Ranks: []int{168000, 182400, 196800, 211200, 225600}},
+	{Level: 7, Ranks: []int{240000, 259500, 279000, 298500, 318000}},
+	{Level: 8, Ranks: []int{337500, 361500, 385500, 409500, 433500}},
+	{Level: 9, Ranks: []int{457500, 486000, 514500, 543000, 571500}},
+	{Level: 10, Ranks: []int{600000, 633000, 666000, 699000, 732000}},
+	{Level: 11, Ranks: []int{765000, 801000, 837000, 873000, 909000}},
+	{Level: 12, Ranks: []int{945000, 984000, 1023000, 1062000, 1101000}},
+	{Level: 13, Ranks: []int{1140000, 1182000, 1224000, 1266000, 1308000}},
+	{Level: 14, Ranks: []int{1350000, 1395000, 1440000, 1485000, 1530000}},
+	{Level: 15, Ranks: []int{1575000, 1623000, 1671000, 1719000, 1767000}},
+	{Level: 16, Ranks: []int{1815000, 1864500, 1914000, 1963500, 2013000}},
+	{Level: 17, Ranks: []int{2062500, 2113500, 2164500, 2215500, 2266500}},
+	{Level: 18, Ranks: []int{2317500, 2370000, 2422500, 2475000, 2527500}},
+	{Level: 19, Ranks: []int{2580000, 2634000, 2688000, 2742000, 2796000}},
+	{Level: 20, Ranks: []int{2850000, 0, 0, 0, 0}}, // heroic XP cap
 }
 
 var heroicLevelsHighTR = []LevelData{
-	{Level: 1, Rank0: 0, Rank1: 1600, Rank2: 3200, Rank3: 4800, Rank4: 6400},
-	{Level: 2, Rank0: 8000, Rank1: 12800, Rank2: 17600, Rank3: 22400, Rank4: 27200},
-	{Level: 3, Rank0: 32000, Rank1: 41600, Rank2: 51200, Rank3: 60800, Rank4: 70400},
-	{Level: 4, Rank0: 80000, Rank1: 92800, Rank2: 105600, Rank3: 118400, Rank4: 131200},
-	{Level: 5, Rank0: 144000, Rank1: 160000, Rank2: 176000, Rank3: 192000, Rank4: 208000},
-	{Level: 6, Rank0: 224000, Rank1: 243200, Rank2: 262400, Rank3: 281600, Rank4: 300800},
-	{Level: 7, Rank0: 320000, Rank1: 346000, Rank2: 372000, Rank3: 398000, Rank4: 424000},
-	{Level: 8, Rank0: 450000, Rank1: 482000, Rank2: 514000, Rank3: 546000, Rank4: 578000},
-	{Level: 9, Rank0: 610000, Rank1: 648000, Rank2: 686000, Rank3: 724000, Rank4: 762000},
-	{Level: 10, Rank0: 800000, Rank1: 844000, Rank2: 888000, Rank3: 932000, Rank4: 976000},
-	{Level: 11, Rank0: 1020000, Rank1: 1068000, Rank2: 1116000, Rank3: 1164000, Rank4: 1212000},
-	{Level: 12, Rank0: 1260000, Rank1: 1312000, Rank2: 1364000, Rank3: 1416000, Rank4: 1468000},
-	{Level: 13, Rank0: 1520000, Rank1: 1576000, Rank2: 1632000, Rank3: 1688000, Rank4: 1744000},
-	{Level: 14, Rank0: 1800000, Rank1: 1860000, Rank2: 1920000, Rank3: 1980000, Rank4: 2040000},
-	{Level: 15, Rank0: 2100000, Rank1: 2164000, Rank2: 2228000, Rank3: 2292000, Rank4: 2356000},
-	{Level: 16, Rank0: 2420000, Rank1: 2486000, Rank2: 2552000, Rank3: 2618000, Rank4: 2684000},
-	{Level: 17, Rank0: 2750000, Rank1: 2818000, Rank2: 2886000, Rank3: 2954000, Rank4: 3022000},
-	{Level: 18, Rank0: 3090000, Rank1: 3160000, Rank2: 3230000, Rank3: 3300000, Rank4: 3370000},
-	{Level: 19, Rank0: 3440000, Rank1: 3512000, Rank2: 3584000, Rank3: 3656000, Rank4: 3728000},
-	{Level: 20, Rank0: 3800000, Rank1: 0, Rank2: 0, Rank3: 0, Rank4: 0}, // heroic XP cap
+	{Level: 1, Ranks: []int{0, 1600, 3200, 4800, 6400}},
+	{Level: 2, Ranks: []int{8000, 12800, 17600, 22400, 27200}},
+	{Level: 3, Ranks: []int{32000, 41600, 51200, 60800, 70400}},
+	{Level: 4, Ranks: []int{80000, 92800, 105600, 118400, 131200}},
+	{Level: 5, Ranks: []int{144000, 160000, 176000, 192000, 208000}},
+	{Level: 6, Ranks: []int{224000, 243200, 262400, 281600, 300800}},
+	{Level: 7, Ranks: []int{320000, 346000, 372000, 398000, 424000}},
+	{Level: 8, Ranks: []int{450000, 482000, 514000, 546000, 578000}},
+	{Level: 9, Ranks: []int{610000, 648000, 686000, 724000, 762000}},
+	{Level: 10, Ranks: []int{800000, 844000, 888000, 932000, 976000}},
+	{Level: 11, Ranks: []int{1020000, 1068000, 1116000, 1164000, 1212000}},
+	{Level: 12, Ranks: []int{1260000, 1312000, 1364000, 1416000, 1468000}},
+	{Level: 13, Ranks: []int{1520000, 1576000, 1632000, 1688000, 1744000}},
+	{Level: 14, Ranks: []int{1800000, 1860000, 1920000, 1980000, 2040000}},
+	{Level: 15, Ranks: []int{2100000, 2164000, 2228000, 2292000, 2356000}},
+	{Level: 16, Ranks: []int{2420000, 2486000, 2552000, 2618000, 2684000}},
+	{Level: 17, Ranks: []int{2750000, 2818000, 2886000, 2954000, 3022000}},
+	{Level: 18, Ranks: []int{3090000, 3160000, 3230000, 3300000, 3370000}},
+	{Level: 19, Ranks: []int{3440000, 3512000, 3584000, 3656000, 3728000}},
+	{Level: 20, Ranks: []int{3800000, 0, 0, 0, 0}}, // heroic XP cap
 }
 
 var epicLevels = []LevelData{
-	{Level: 20, Rank0: 0, Rank1: 120000, Rank2: 240000, Rank3: 360000, Rank4: 480000},
-	{Level: 21, Rank0: 600000, Rank1: 730000, Rank2: 860000, Rank3: 990000, Rank4: 1120000},
-	{Level: 22, Rank0: 1250000, Rank1: 1390000, Rank2: 1530000, Rank3: 1670000, Rank4: 1810000},
-	{Level: 23, Rank0: 1950000, Rank1: 2100000, Rank2: 2250000, Rank3: 2400000, Rank4: 2550000},
-	{Level: 24, Rank0: 2700000, Rank1: 2860000, Rank2: 3020000, Rank3: 3180000, Rank4: 3340000},
-	{Level: 25, Rank0: 3500000, Rank1: 3670000, Rank2: 3840000, Rank3: 4010000, Rank4: 4180000},
-	{Level: 26, Rank0: 4350000, Rank1: 4530000, Rank2: 4710000, Rank3: 4890000, Rank4: 5070000},
-	{Level: 27, Rank0: 5250000, Rank1: 5440000, Rank2: 5630000, Rank3: 5820000, Rank4: 6010000},
-	{Level: 28, Rank0: 6200000, Rank1: 6400000, Rank2: 6600000, Rank3: 6800000, Rank4: 7000000},
-	{Level: 29, Rank0: 7200000, Rank1: 7410000, Rank2: 7620000, Rank3: 7830000, Rank4: 8040000},
-	{Level: 30, Rank0: 8250000, Rank1: 0, Rank2: 0, Rank3: 0, Rank4: 0}, // epic XP cap
+	{Level: 20, Ranks: []int{0, 120000, 240000, 360000, 480000}},
+	{Level: 21, Ranks: []int{600000, 730000, 860000, 990000, 1120000}},
+	{Level: 22, Ranks: []int{1250000, 1390000, 1530000, 1670000, 1810000}},
+	{Level: 23, Ranks: []int{1950000, 2100000, 2250000, 2400000, 2550000}},
+	{Level: 24, Ranks: []int{2700000, 2860000, 3020000, 3180000, 3340000}},
+	{Level: 25, Ranks: []int{3500000, 3670000, 3840000, 4010000, 4180000}},
+	{Level: 26, Ranks: []int{4350000, 4530000, 4710000, 4890000, 5070000}},
+	{Level: 27, Ranks: []int{5250000, 5440000, 5630000, 5820000, 6010000}},
+	{Level: 28, Ranks: []int{6200000, 6400000, 6600000, 6800000, 7000000}},
+	{Level: 29, Ranks: []int{7200000, 7410000, 7620000, 7830000, 8040000}},
+	{Level: 30, Ranks: []int{8250000, 0, 0, 0, 0}}, // epic XP cap
 }
 
 var legendaryLevels = []LevelData{
-	{Level: 30, Rank0: 0, Rank1: 320000, Rank2: 640000, Rank3: 960000, Rank4: 1280000},
-	{Level: 31, Rank0: 1600000, Rank1: 2000000, Rank2: 2400000, Rank3: 2800000, Rank4: 3200000},
-	{Level: 32, Rank0: 3600000, Rank1: 4020000, Rank2: 4440000, Rank3: 4860000, Rank4: 5280000},
-	{Level: 33, Rank0: 5700000, Rank1: 6140000, Rank2: 6580000, Rank3: 7020000, Rank4: 7460000},
-	{Level: 34, Rank0: 7900000, Rank1: 8360000, Rank2: 8820000, Rank3: 9280000, Rank4: 9740000},
-	{Level: 35, Rank0: 10200000, Rank1: 10680000, Rank2: 11160000, Rank3: 11640000, Rank4: 12120000},
-	{Level: 36, Rank0: 12600000, Rank1: 0, Rank2: 0, Rank3: 0, Rank4: 0}, // legendary XP cap
+	{Level: 30, Ranks: []int{0, 320000, 640000, 960000, 1280000}},
+	{Level: 31, Ranks: []int{1600000, 2000000, 2400000, 2800000, 3200000}},
+	{Level: 32, Ranks: []int{3600000, 4020000, 4440000, 4860000, 5280000}},
+	{Level: 33, Ranks: []int{5700000, 6140000, 6580000, 7020000, 7460000}},
+	{Level: 34, Ranks: []int{7900000, 8360000, 8820000, 9280000, 9740000}},
+	{Level: 35, Ranks: []int{10200000, 10680000, 11160000, 11640000, 12120000}},
+	{Level: 36, Ranks: []int{12600000, 0, 0, 0, 0}}, // legendary XP cap
 }
 
 func getTypeofLevel() int {
@@ -208,31 +204,36 @@ func getLevelFromExperiencePoints(levels []LevelData, experiencePoints int) (int
 
 	// Determine character level based on experience points
 	for i := len(levels) - 1; i >= 0; i-- {
-		if levels[i].Rank0 <= experiencePoints {
+		if levels[i].Ranks[0] <= experiencePoints {
 			characterLevel = levels[i].Level
 			// Determine experiences needed for next level
 			if i < len(levels)-1 {
-				experiencesToNextLevel = levels[i+1].Rank0 - experiencePoints
+				experiencesToNextLevel = levels[i+1].Ranks[0] - experiencePoints
 			} else {
 				experiencesToNextLevel = 0 // Max level reached, no more XP needed for next level
 			}
 			// Determine rank based on experience points
-			if experiencePoints < levels[i].Rank1 {
-				characterRank = 0
-			} else if experiencePoints < levels[i].Rank2 {
-				characterRank = 1
-			} else if experiencePoints < levels[i].Rank3 {
-				characterRank = 2
-			} else if experiencePoints < levels[i].Rank4 {
-				characterRank = 3
-			} else {
-				characterRank = 4
+			for j := 0; j < 5; j++ {
+				if experiencePoints < levels[i].Ranks[j] {
+					characterRank = j - 1
+					break
+				}
 			}
 			break
 		}
 	}
 
 	return characterLevel, characterRank, experiencesToNextLevel
+}
+
+func printCharacterStatus(level int, rank int, experiencesToNextLevel int) {
+	fmt.Println("Your character level is:", level)
+	fmt.Println("Your character rank is:", rank)
+	if experiencesToNextLevel > 0 {
+		fmt.Println("Experience points needed for next level:", experiencesToNextLevel)
+	} else {
+		fmt.Println("You have reached the maximum level. No more experience points are needed.")
+	}
 }
 
 func main() {
@@ -242,49 +243,42 @@ func main() {
 	// Get level type from user input (1 = heroic, 2 = epic, 3 = legendary)
 	levelType := getTypeofLevel()
 
+	// Get reincarnations status from user input (only for heroic levels)
 	var reincarnationsStatus int
 	if levelType == 1 {
 		reincarnationsStatus = getReincarnationsStatus()
 	}
 
+	// Get experience points from user input
 	experiencePoints := getExperiencePoints()
 
+	// Determine character level, rank, and experiences needed for next level based on user input
 	switch levelType {
 	case 1:
 		switch reincarnationsStatus {
 		case 1:
 			fmt.Println("You have chosen Heroic Level with 0-3 true reincarnations and", experiencePoints, "experience points.")
 			characterLevel, characterRank, experiencesToNextLevel := getLevelFromExperiencePoints(heroicLevelsLowTR, experiencePoints)
-			fmt.Println("Your character level is:", characterLevel)
-			fmt.Println("Your character rank is:", characterRank)
-			fmt.Println("Experience points needed for next level:", experiencesToNextLevel)
+			printCharacterStatus(characterLevel, characterRank, experiencesToNextLevel)
 		case 2:
 			fmt.Println("You have chosen Heroic Level with 4-6 true reincarnations and", experiencePoints, "experience points.")
 			characterLevel, characterRank, experiencesToNextLevel := getLevelFromExperiencePoints(heroicLevelsMidTR, experiencePoints)
-			fmt.Println("Your character level is:", characterLevel)
-			fmt.Println("Your character rank is:", characterRank)
-			fmt.Println("Experience points needed for next level:", experiencesToNextLevel)
+			printCharacterStatus(characterLevel, characterRank, experiencesToNextLevel)
 		case 3:
 			fmt.Println("You have chosen Heroic Level with 7 or more true reincarnations and", experiencePoints, "experience points.")
 			characterLevel, characterRank, experiencesToNextLevel := getLevelFromExperiencePoints(heroicLevelsHighTR, experiencePoints)
-			fmt.Println("Your character level is:", characterLevel)
-			fmt.Println("Your character rank is:", characterRank)
-			fmt.Println("Experience points needed for next level:", experiencesToNextLevel)
+			printCharacterStatus(characterLevel, characterRank, experiencesToNextLevel)
 		default:
 			fmt.Println("Invalid reincarnations status")
 		}
 	case 2:
 		fmt.Println("You have chosen Epic Level with", experiencePoints, "experience points.")
 		characterLevel, characterRank, experiencesToNextLevel := getLevelFromExperiencePoints(epicLevels, experiencePoints)
-		fmt.Println("Your character level is:", characterLevel)
-		fmt.Println("Your character rank is:", characterRank)
-		fmt.Println("Experience points needed for next level:", experiencesToNextLevel)
+		printCharacterStatus(characterLevel, characterRank, experiencesToNextLevel)
 	case 3:
 		fmt.Println("You have chosen Legendary Level with", experiencePoints, "experience points.")
 		characterLevel, characterRank, experiencesToNextLevel := getLevelFromExperiencePoints(legendaryLevels, experiencePoints)
-		fmt.Println("Your character level is:", characterLevel)
-		fmt.Println("Your character rank is:", characterRank)
-		fmt.Println("Experience points needed for next level:", experiencesToNextLevel)
+		printCharacterStatus(characterLevel, characterRank, experiencesToNextLevel)
 	default:
 		fmt.Println("Invalid level type")
 	}
