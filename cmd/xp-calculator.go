@@ -213,7 +213,7 @@ func getLevelFromExperiencePoints(levels []LevelData, experiencePoints int) (int
 				experiencesToNextLevel = 0 // Max level reached, no more XP needed for next level
 			}
 			// Determine rank based on experience points
-			for j := 0; j < 5; j++ {
+			for j := 4; j >= 0; j-- {
 				if experiencePoints < levels[i].Ranks[j] {
 					characterRank = j - 1
 					break
