@@ -1,7 +1,5 @@
 package main
 
-// todo create unit tests for getCharacterStatus and getExperiencePoints functions
-
 import (
 	"fmt"
 )
@@ -211,11 +209,13 @@ func getLevelFromExperiencePoints(levels []LevelData, experiencePoints int) (int
 				experiencesToNextLevel = levels[i+1].Ranks[0] - experiencePoints
 			} else {
 				experiencesToNextLevel = 0 // Max level reached, no more XP needed for next level
+				characterRank = 0
+				break
 			}
 			// Determine rank based on experience points
 			for j := 4; j >= 0; j-- {
-				if experiencePoints < levels[i].Ranks[j] {
-					characterRank = j - 1
+				if levels[i].Ranks[j] <= experiencePoints {
+					characterRank = j
 					break
 				}
 			}

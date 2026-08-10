@@ -95,6 +95,7 @@ Priority:
 - [ ] [P2] golangci-lint basics
 - [ ] [P1] go install
 - [ ] [P1] go get (fetching dependencies)
+- [ ] [P1] Go package patterns for commands (., ./..., ./cmd/...)
 
 ## Project Structure
 
