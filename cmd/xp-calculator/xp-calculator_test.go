@@ -1,111 +1,86 @@
 package main
 
-import "testing"
+import (
+	"testing"
+)
 
-func TestGetLevelFromExperiencePoints_HeroicLowTR_Level1Rank0(t *testing.T) {
-	experiencePoints := 0
-
-	level, rank, xpToNextLevel := getLevelFromExperiencePoints(heroicLevelsLowTR, experiencePoints)
-
-	if level != 1 {
-		t.Fatalf("expected level 1, got %d", level)
-	}
-
-	if rank != 0 {
-		t.Fatalf("expected rank 0, got %d", rank)
-	}
-
-	if xpToNextLevel != 4000 {
-		t.Fatalf("expected 4000 XP to next level, got %d", xpToNextLevel)
-	}
+type testCase struct {
+	name             string
+	levelData        []LevelData
+	experiencePoints int
+	expectedLevel    int
+	expectedRank     int
+	expectedXPToNext int
 }
 
-func TestGetLevelFromExperiencePoints_HeroicLowTR_Level1Rank2(t *testing.T) {
-	experiencePoints := 1600
+func TestGetLevelFromExperiencePoints_TableDriven(t *testing.T) {
 
-	level, rank, xpToNextLevel := getLevelFromExperiencePoints(heroicLevelsLowTR, experiencePoints)
-
-	if level != 1 {
-		t.Fatalf("expected level 1, got %d", level)
+	testCases := []testCase{
+		{
+			name:             "Heroic Low TR - Level 1 Rank 0",
+			levelData:        heroicLevelsLowTR,
+			experiencePoints: 0,
+			expectedLevel:    1,
+			expectedRank:     0,
+			expectedXPToNext: 4000,
+		},
+		{
+			name:             "Heroic Low TR - Level 1 Rank 2",
+			levelData:        heroicLevelsLowTR,
+			experiencePoints: 1600,
+			expectedLevel:    1,
+			expectedRank:     2,
+			expectedXPToNext: 2400,
+		},
+		{
+			name:             "Heroic Mid TR - Level 10 Rank 1",
+			levelData:        heroicLevelsMidTR,
+			experiencePoints: 650000,
+			expectedLevel:    10,
+			expectedRank:     1,
+			expectedXPToNext: 115000,
+		},
+		{
+			name:             "Heroic High TR - Level 20 Rank 0",
+			levelData:        heroicLevelsHighTR,
+			experiencePoints: 3800000,
+			expectedLevel:    20,
+			expectedRank:     0,
+			expectedXPToNext: 0,
+		},
+		{
+			name:             "Epic TR - Level 29 Rank 4",
+			levelData:        epicLevels,
+			experiencePoints: 8249999,
+			expectedLevel:    29,
+			expectedRank:     4,
+			expectedXPToNext: 1,
+		},
+		{
+			name:             "Max xp - Level 36 Rank 0",
+			levelData:        legendaryLevels,
+			experiencePoints: 12600000,
+			expectedLevel:    36,
+			expectedRank:     0,
+			expectedXPToNext: 0,
+		},
 	}
 
-	if rank != 2 {
-		t.Fatalf("expected rank 2, got %d", rank)
-	}
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			level, rank, xpToNextLevel := getLevelFromExperiencePoints(tc.levelData, tc.experiencePoints)
 
-	if xpToNextLevel != 2400 {
-		t.Fatalf("expected 2400 XP to next level, got %d", xpToNextLevel)
-	}
-}
+			if level != tc.expectedLevel {
+				t.Fatalf("expected level %d, got %d", tc.expectedLevel, level)
+			}
 
-func TestGetLevelFromExperiencePoints_HeroicMidTR_Level10Rank1(t *testing.T) {
-	experiencePoints := 650000
+			if rank != tc.expectedRank {
+				t.Fatalf("expected rank %d, got %d", tc.expectedRank, rank)
+			}
 
-	level, rank, xpToNextLevel := getLevelFromExperiencePoints(heroicLevelsMidTR, experiencePoints)
-
-	if level != 10 {
-		t.Fatalf("expected level 10, got %d", level)
-	}
-
-	if rank != 1 {
-		t.Fatalf("expected rank 1, got %d", rank)
-	}
-
-	if xpToNextLevel != 115000 {
-		t.Fatalf("expected 115000 XP to next level, got %d", xpToNextLevel)
-	}
-}
-
-func TestGetLevelFromExperiencePoints_HeroicHighTR_Level20Rank0(t *testing.T) {
-	experiencePoints := 3800000
-
-	level, rank, xpToNextLevel := getLevelFromExperiencePoints(heroicLevelsHighTR, experiencePoints)
-
-	if level != 20 {
-		t.Fatalf("expected level 20, got %d", level)
-	}
-
-	if rank != 0 {
-		t.Fatalf("expected rank 0, got %d", rank)
-	}
-
-	if xpToNextLevel != 0 {
-		t.Fatalf("expected 0 XP to next level, got %d", xpToNextLevel)
-	}
-}
-
-func TestGetLevelFromExperiencePoints_EpicTR_Level29Rank4(t *testing.T) {
-	experiencePoints := 8249999
-
-	level, rank, xpToNextLevel := getLevelFromExperiencePoints(epicLevels, experiencePoints)
-
-	if level != 29 {
-		t.Fatalf("expected level 29, got %d", level)
-	}
-
-	if rank != 4 {
-		t.Fatalf("expected rank 4, got %d", rank)
-	}
-
-	if xpToNextLevel != 1 {
-		t.Fatalf("expected 1 XP to next level, got %d", xpToNextLevel)
-	}
-}
-
-func TestGetLevelFromExperiencePoints_MaxLevel(t *testing.T) {
-	experiencePoints := 12600000
-
-	level, rank, xpToNextLevel := getLevelFromExperiencePoints(legendaryLevels, experiencePoints)
-
-	if level != 36 {
-		t.Fatalf("expected level 36, got %d", level)
-	}
-
-	if rank != 0 {
-		t.Fatalf("expected rank 0, got %d", rank)
-	}
-
-	if xpToNextLevel != 0 {
-		t.Fatalf("expected 0 XP to next level, got %d", xpToNextLevel)
+			if xpToNextLevel != tc.expectedXPToNext {
+				t.Fatalf("expected %d XP to next level, got %d", tc.expectedXPToNext, xpToNextLevel)
+			}
+		})
 	}
 }
