@@ -232,8 +232,14 @@ func printCharacterStatus(level int, rank int, experiencesToNextLevel int) {
 	if experiencesToNextLevel > 0 {
 		fmt.Println("Experience points needed for next level:", experiencesToNextLevel)
 	} else {
-		fmt.Println("You have reached the maximum level. No more experience points are needed.")
+		fmt.Println("You have reached the maximum level in heroic, epic or legendary tier. No more experience points are needed.")
 	}
+}
+
+func printResult(levelData []LevelData, levelTypeText string, experiencePoints int) {
+	fmt.Println("You have chosen", levelTypeText, " and", experiencePoints, "experience points.")
+	characterLevel, characterRank, experiencesToNextLevel := getLevelFromExperiencePoints(levelData, experiencePoints)
+	printCharacterStatus(characterLevel, characterRank, experiencesToNextLevel)
 }
 
 func main() {
@@ -257,28 +263,18 @@ func main() {
 	case 1:
 		switch reincarnationsStatus {
 		case 1:
-			fmt.Println("You have chosen Heroic Level with 0-3 true reincarnations and", experiencePoints, "experience points.")
-			characterLevel, characterRank, experiencesToNextLevel := getLevelFromExperiencePoints(heroicLevelsLowTR, experiencePoints)
-			printCharacterStatus(characterLevel, characterRank, experiencesToNextLevel)
+			printResult(heroicLevelsLowTR, "Heroic Level with 0-3 true reincarnations", experiencePoints)
 		case 2:
-			fmt.Println("You have chosen Heroic Level with 4-6 true reincarnations and", experiencePoints, "experience points.")
-			characterLevel, characterRank, experiencesToNextLevel := getLevelFromExperiencePoints(heroicLevelsMidTR, experiencePoints)
-			printCharacterStatus(characterLevel, characterRank, experiencesToNextLevel)
+			printResult(heroicLevelsMidTR, "Heroic Level with 4-6 true reincarnations", experiencePoints)
 		case 3:
-			fmt.Println("You have chosen Heroic Level with 7 or more true reincarnations and", experiencePoints, "experience points.")
-			characterLevel, characterRank, experiencesToNextLevel := getLevelFromExperiencePoints(heroicLevelsHighTR, experiencePoints)
-			printCharacterStatus(characterLevel, characterRank, experiencesToNextLevel)
+			printResult(heroicLevelsHighTR, "Heroic Level with 7 or more true reincarnations", experiencePoints)
 		default:
 			fmt.Println("Invalid reincarnations status")
 		}
 	case 2:
-		fmt.Println("You have chosen Epic Level with", experiencePoints, "experience points.")
-		characterLevel, characterRank, experiencesToNextLevel := getLevelFromExperiencePoints(epicLevels, experiencePoints)
-		printCharacterStatus(characterLevel, characterRank, experiencesToNextLevel)
+		printResult(epicLevels, "Epic Level", experiencePoints)
 	case 3:
-		fmt.Println("You have chosen Legendary Level with", experiencePoints, "experience points.")
-		characterLevel, characterRank, experiencesToNextLevel := getLevelFromExperiencePoints(legendaryLevels, experiencePoints)
-		printCharacterStatus(characterLevel, characterRank, experiencesToNextLevel)
+		printResult(legendaryLevels, "Legendary Level", experiencePoints)
 	default:
 		fmt.Println("Invalid level type")
 	}
