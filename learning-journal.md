@@ -95,6 +95,7 @@ Priority:
 - [ ] [P2] golangci-lint basics
 - [ ] [P1] go install
 - [ ] [P1] go get (fetching dependencies)
+- [ ] [P1] Go package patterns for commands (., ./..., ./cmd/...)
 
 ## Project Structure
 
@@ -205,3 +206,6 @@ Priority:
 - [ ] [P3] Evaluation pipelines for AI outputs
 - [ ] [P3] Prompt injection and model security hardening
 - [ ] [P3] Fine-tuning vs retrieval trade-offs
+
+# Notes
+- The short variable declaration := is a statement, and statements are only allowed inside function bodies in Go.
