@@ -9,7 +9,7 @@ Priority:
 
 ## Golang
 
-- [ ] [P1] Variables and constants
+- [x] [P1] Variables and constants
 - [ ] [P1] Data types (int, string, slice, map, struct)
 - [ ] [P1] Functions and return values
 - [ ] [P1] Error handling (error interface, wrapping)
