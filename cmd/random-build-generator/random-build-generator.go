@@ -79,8 +79,25 @@ func containsClass(classes []string, wanted string) bool {
 	return false
 }
 
-func getLevels() int {
-	return rand.IntN(20) + 1
+func getLevels(numberOfClasses int) [3]int {
+	switch numberOfClasses {
+	case 1:
+		return [3]int{20, 0, 0}
+	case 2:
+		total := 20
+		first := rand.IntN(19) + 1
+		second := total - first
+		return [3]int{first, second, 0}
+	case 3:
+		total := 20
+		first := rand.IntN(19) + 1
+		second := rand.IntN(total-first-1) + 1
+		third := total - first - second
+		return [3]int{first, second, third}
+	default:
+		println("Invalid number of classes")
+		return [3]int{0, 0, 0}
+	}
 }
 
 func generateClasses(numClasses int) (string, []string) {
@@ -137,29 +154,31 @@ func main() {
 			fmt.Scanln(&discard)
 			continue
 		}
-		if choice == 1 || choice == 2 || choice == 3 || choice == 4 {
-			fmt.Println("Valid choice:", choice)
+		if choice == 4 {
+			choice = rand.IntN(3) + 1 // 1..3
+		}
+		if choice == 1 || choice == 2 || choice == 3 {
 			fmt.Println()
 			switch choice {
 			case 1:
 				generatedRace, generatedClass := generateClasses(1)
 				fmt.Println("GENERATED BUILD:")
 				fmt.Println("Race:", generatedRace)
-				fmt.Println("Class:", generatedClass[0], "20")
+				fmt.Printf("Class: %s [20]\n", generatedClass[0])
 			case 2:
 				// Implement logic for two classes
 				generatedRace, generatedClasses := generateClasses(2)
+				levels := getLevels(2) // Example call to getLevels function for two classes
 				fmt.Println("GENERATED BUILD:")
 				fmt.Println("Race:", generatedRace)
-				fmt.Println("Classes:", generatedClasses[0], "and", generatedClasses[1])
+				fmt.Printf("Classes: %s [%d] and %s [%d]\n", generatedClasses[0], levels[0], generatedClasses[1], levels[1])
 			case 3:
 				// Implement logic for three classes
 				generatedRace, generatedClasses := generateClasses(3)
+				levels := getLevels(3) // Example call to getLevels function for three classes
 				fmt.Println("GENERATED BUILD:")
 				fmt.Println("Race:", generatedRace)
-				fmt.Println("Classes:", generatedClasses)
-			case 4:
-				// Implement logic for random number of classes
+				fmt.Printf("Classes: %s [%d], %s [%d] and %s [%d]\n", generatedClasses[0], levels[0], generatedClasses[1], levels[1], generatedClasses[2], levels[2])
 			}
 			break
 		} else {
