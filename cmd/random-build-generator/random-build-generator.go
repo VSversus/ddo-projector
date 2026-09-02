@@ -284,7 +284,6 @@ func askForMulticlass() int {
 func main() {
 	fmt.Println()
 	fmt.Println("WELCOME TO THE RANDOM BUILD GENERATOR!")
-	fmt.Println()
 
 	freeToPlayOnly := askForFreeToPlay()
 	iconicRacesIncluded := askForIconicRace()
