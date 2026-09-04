@@ -15,6 +15,16 @@ type Class struct {
 	Name       string
 	FreeToPlay bool
 	Archetype  string
+	Alignment  Alignment
+}
+
+type Alignment struct {
+	LawfulGood     bool
+	LawfulNeutral  bool
+	NeutralGood    bool
+	TrueNeutral    bool
+	ChaoticGood    bool
+	ChaoticNeutral bool
 }
 
 var racesOptions = []Race{
@@ -51,31 +61,31 @@ var racesOptions = []Race{
 }
 
 var classesOptions = []Class{
-	{Name: "Fighter", FreeToPlay: true, Archetype: ""},
-	{Name: "Wizard", FreeToPlay: true, Archetype: ""},
-	{Name: "Rogue", FreeToPlay: true, Archetype: ""},
-	{Name: "Cleric", FreeToPlay: true, Archetype: ""},
-	{Name: "Paladin", FreeToPlay: true, Archetype: ""},
-	{Name: "Ranger", FreeToPlay: true, Archetype: ""},
-	{Name: "Bard", FreeToPlay: true, Archetype: ""},
-	{Name: "Monk", FreeToPlay: true, Archetype: ""},
-	{Name: "Druid", FreeToPlay: true, Archetype: ""},
-	{Name: "Barbarian", FreeToPlay: true, Archetype: ""},
-	{Name: "Sorcerer", FreeToPlay: true, Archetype: ""},
-	{Name: "Warlock", FreeToPlay: true, Archetype: ""},
-	{Name: "Artificer", FreeToPlay: false, Archetype: ""},
-	{Name: "Alchemist", FreeToPlay: false, Archetype: ""},
-	{Name: "Favored Soul", FreeToPlay: false, Archetype: ""},
-	{Name: "Stormsinger", FreeToPlay: true, Archetype: "Bard"},
-	{Name: "Dark Apostate", FreeToPlay: true, Archetype: "Cleric"},
-	{Name: "Sacred Fist", FreeToPlay: true, Archetype: "Paladin"},
-	{Name: "Blightcaster", FreeToPlay: true, Archetype: "Druid"},
-	{Name: "Dark Hunter", FreeToPlay: true, Archetype: "Ranger"},
-	{Name: "Acolyte of the Skin", FreeToPlay: true, Archetype: "Warlock"},
-	{Name: "Dragon Lord", FreeToPlay: false, Archetype: "Fighter"},
-	{Name: "Dragon Disciple", FreeToPlay: false, Archetype: "Monk"},
-	{Name: "Arcane Trickster", FreeToPlay: false, Archetype: "Rogue"},
-	{Name: "Wild Mage", FreeToPlay: false, Archetype: "Sorcerer"},
+	{Name: "Fighter", FreeToPlay: true, Archetype: "", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Wizard", FreeToPlay: true, Archetype: "", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Rogue", FreeToPlay: true, Archetype: "", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Cleric", FreeToPlay: true, Archetype: "", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Paladin", FreeToPlay: true, Archetype: "", Alignment: Alignment{LawfulGood: true, LawfulNeutral: false, NeutralGood: false, TrueNeutral: false, ChaoticGood: false, ChaoticNeutral: false}},
+	{Name: "Ranger", FreeToPlay: true, Archetype: "", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Bard", FreeToPlay: true, Archetype: "", Alignment: Alignment{LawfulGood: false, LawfulNeutral: false, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Monk", FreeToPlay: true, Archetype: "", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: false, TrueNeutral: false, ChaoticGood: false, ChaoticNeutral: false}},
+	{Name: "Druid", FreeToPlay: true, Archetype: "", Alignment: Alignment{LawfulGood: false, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: false, ChaoticNeutral: true}},
+	{Name: "Barbarian", FreeToPlay: true, Archetype: "", Alignment: Alignment{LawfulGood: false, LawfulNeutral: false, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Sorcerer", FreeToPlay: true, Archetype: "", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Warlock", FreeToPlay: true, Archetype: "", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Artificer", FreeToPlay: false, Archetype: "", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Alchemist", FreeToPlay: false, Archetype: "", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Favored Soul", FreeToPlay: false, Archetype: "", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Stormsinger", FreeToPlay: true, Archetype: "Bard", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Dark Apostate", FreeToPlay: true, Archetype: "Cleric", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Sacred Fist", FreeToPlay: true, Archetype: "Paladin", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Blightcaster", FreeToPlay: true, Archetype: "Druid", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Dark Hunter", FreeToPlay: true, Archetype: "Ranger", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Acolyte of the Skin", FreeToPlay: true, Archetype: "Warlock", Alignment: Alignment{LawfulGood: false, LawfulNeutral: true, NeutralGood: false, TrueNeutral: false, ChaoticGood: false, ChaoticNeutral: true}},
+	{Name: "Dragon Lord", FreeToPlay: false, Archetype: "Fighter", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Dragon Disciple", FreeToPlay: false, Archetype: "Monk", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Arcane Trickster", FreeToPlay: false, Archetype: "Rogue", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Wild Mage", FreeToPlay: false, Archetype: "Sorcerer", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
 }
 
 func getFreeToPlayRacesOnly(items []Race) []Race {
@@ -108,6 +118,26 @@ func filterClassesByFreeToPlay(items []Class, wantFree bool) []Class {
 	return out
 }
 
+func isAlignmentCompatible(candidateAlignment Alignment, selectedAlignments []Alignment) bool {
+	compatible := candidateAlignment
+
+	for _, selected := range selectedAlignments {
+		compatible.LawfulGood = compatible.LawfulGood && selected.LawfulGood
+		compatible.LawfulNeutral = compatible.LawfulNeutral && selected.LawfulNeutral
+		compatible.NeutralGood = compatible.NeutralGood && selected.NeutralGood
+		compatible.TrueNeutral = compatible.TrueNeutral && selected.TrueNeutral
+		compatible.ChaoticGood = compatible.ChaoticGood && selected.ChaoticGood
+		compatible.ChaoticNeutral = compatible.ChaoticNeutral && selected.ChaoticNeutral
+	}
+
+	return compatible.LawfulGood ||
+		compatible.LawfulNeutral ||
+		compatible.NeutralGood ||
+		compatible.TrueNeutral ||
+		compatible.ChaoticGood ||
+		compatible.ChaoticNeutral
+}
+
 func getRandomRace(freeToPlay bool, iconicIncluded bool) string {
 	pool := racesOptions
 
@@ -121,30 +151,53 @@ func getRandomRace(freeToPlay bool, iconicIncluded bool) string {
 	return pool[rand.IntN(len(pool))].Name
 }
 
-func getRandomClass(freeToPlay bool) (string, string) {
-	if !freeToPlay {
-		randomIndex := rand.IntN(len(classesOptions))
-		return classesOptions[randomIndex].Name, classesOptions[randomIndex].Archetype
-	}
-	filteredClasses := filterClassesByFreeToPlay(classesOptions, freeToPlay)
-	randomIndex := rand.IntN(len(filteredClasses))
-	return filteredClasses[randomIndex].Name, filteredClasses[randomIndex].Archetype
+func getRandomClass(availableClasses []Class) string {
+	randomIndex := rand.IntN(len(availableClasses))
+	return availableClasses[randomIndex].Name
 }
 
-func canAddClass(selectedClasses []string, candidateClassName string, candidateArchetype string) bool {
+func canAddClass(selectedClasses []string, candidateClassName string) bool {
+	// get archetype and alignments of candidate class
+	candidateAlignments := Alignment{}
+	candidateArchetype := ""
+	for _, class := range classesOptions {
+		if class.Name == candidateClassName {
+			candidateAlignments = class.Alignment
+			candidateArchetype = class.Archetype
+			break
+		}
+	}
+
+	// get all alignments of the already selected classes
+	selectedAlignments := []Alignment{}
 	for _, selected := range selectedClasses {
+		for _, class := range classesOptions {
+			if class.Name == selected {
+				selectedAlignments = append(selectedAlignments, class.Alignment)
+				break
+			}
+		}
+	}
+
+	for _, selected := range selectedClasses {
+		// Check if the selected class is the same as the candidate class (covers also the case when the selected archetype is the same as candidate archetype)
 		if selected == candidateClassName {
 			return false
 		}
-
+		// Check if the selected class is the same as the candidate archetype
 		if candidateArchetype != "" && selected == candidateArchetype {
 			return false
 		}
-
-		for _, classOption := range classesOptions {
-			if classOption.Name == selected && classOption.Archetype == candidateClassName {
+		// Check if the selected archetype is the same as the candidate class
+		for _, class := range classesOptions {
+			if class.Name == selected && class.Archetype == candidateClassName {
 				return false
 			}
+		}
+		// check if the candidate allowed alignments is compatible with the already selected classes
+		// selected class must have at least one alignment with true in common with the candidate class
+		if !isAlignmentCompatible(candidateAlignments, selectedAlignments) {
+			return false
 		}
 	}
 
@@ -172,16 +225,35 @@ func getLevels(numberOfClasses int) [3]int {
 	}
 }
 
-func generateClasses(freeToPlayRaces bool, numClasses int) []string {
+func removeClass(classes []Class, className string) []Class {
+	remaining := make([]Class, 0, len(classes))
+
+	for _, class := range classes {
+		if class.Name != className {
+			remaining = append(remaining, class)
+		}
+	}
+
+	return remaining
+}
+
+func generateClasses(freeToPlayOnly bool, numClasses int) []string {
 	var generatedClasses []string
+	var availableClasses []Class = classesOptions
+
+	if freeToPlayOnly {
+		availableClasses = filterClassesByFreeToPlay(availableClasses, true)
+	}
 
 	for i := 0; i < numClasses; i++ {
-		for {
-			randomClassName, randomClassArchetype := getRandomClass(freeToPlayRaces)
+		for len(generatedClasses) < numClasses && len(availableClasses) > 0 {
+			randomClassName := getRandomClass(availableClasses)
 			// Ensure the randomly selected class is not already in the generated classes list
-			if canAddClass(generatedClasses, randomClassName, randomClassArchetype) {
+			if canAddClass(generatedClasses, randomClassName) {
 				generatedClasses = append(generatedClasses, randomClassName)
 				break
+			} else {
+				availableClasses = removeClass(availableClasses, randomClassName)
 			}
 		}
 	}
@@ -191,8 +263,8 @@ func generateClasses(freeToPlayRaces bool, numClasses int) []string {
 func askForFreeToPlay() bool {
 	fmt.Println("")
 	fmt.Println("Free to Play only?")
-	fmt.Println("1. Only Free to Play")
-	fmt.Println("2. Include Premium Races")
+	fmt.Println("1. Include Premium Races")
+	fmt.Println("2. Only Free to Play")
 	var freeToPlayChoice int
 	_, err := fmt.Scanln(&freeToPlayChoice)
 	if err != nil {
@@ -206,9 +278,9 @@ func askForFreeToPlay() bool {
 	}
 	switch freeToPlayChoice {
 	case 1:
-		return true
-	case 2:
 		return false
+	case 2:
+		return true
 	default:
 		fmt.Println("--------------------------------------")
 		fmt.Println("Invalid input. Please enter 1 or 2")

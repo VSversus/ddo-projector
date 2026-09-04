@@ -1,3 +1,2 @@
 - add option to generate Eberron or Forgotten Realms
-- investigate restrictions with alignment and implement it
 - add unit tests

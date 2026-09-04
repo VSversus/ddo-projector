@@ -207,10 +207,13 @@ Priority:
 - [ ] [P3] Prompt injection and model security hardening
 - [ ] [P3] Fine-tuning vs retrieval trade-offs
 
-# Notes - Programming
+# Notes - Golang
 - The short variable declaration := is a statement, and statements are only allowed inside function bodies in Go.
 - A function can call itself recursively and return that call's result.
 - In Go, write boolean checks directly. Avoid == true and == false when the value is already a boolean.
+
+# Notes - Programing & Algorithms
+- If intersection is needed, it can be achieved with && logic
 
 # Notes - VsCode
 - Ctrl+P quick open
