@@ -204,27 +204,6 @@ func canAddClass(selectedClasses []string, candidateClassName string) bool {
 	return true
 }
 
-func getLevels(numberOfClasses int) [3]int {
-	switch numberOfClasses {
-	case 1:
-		return [3]int{20, 0, 0}
-	case 2:
-		total := 20
-		first := rand.IntN(19) + 1
-		second := total - first
-		return [3]int{first, second, 0}
-	case 3:
-		total := 20
-		first := rand.IntN(19) + 1
-		second := rand.IntN(total-first-1) + 1
-		third := total - first - second
-		return [3]int{first, second, third}
-	default:
-		println("Invalid number of classes")
-		return [3]int{0, 0, 0}
-	}
-}
-
 func removeClass(classes []Class, className string) []Class {
 	remaining := make([]Class, 0, len(classes))
 
@@ -258,6 +237,27 @@ func generateClasses(freeToPlayOnly bool, numClasses int) []string {
 		}
 	}
 	return generatedClasses
+}
+
+func getLevels(numberOfClasses int) [3]int {
+	switch numberOfClasses {
+	case 1:
+		return [3]int{20, 0, 0}
+	case 2:
+		total := 20
+		first := rand.IntN(19) + 1
+		second := total - first
+		return [3]int{first, second, 0}
+	case 3:
+		total := 20
+		first := rand.IntN(19) + 1
+		second := rand.IntN(total-first-1) + 1
+		third := total - first - second
+		return [3]int{first, second, third}
+	default:
+		println("Invalid number of classes")
+		return [3]int{0, 0, 0}
+	}
 }
 
 func askForFreeToPlay() bool {
@@ -353,13 +353,55 @@ func askForMulticlass() int {
 	}
 }
 
+func askForCompleteRandomness() bool {
+	fmt.Println("")
+	fmt.Println("Do you want complete randomness?")
+	fmt.Println("1. Yes, complete randomness")
+	fmt.Println("2. No, ask me for each choice")
+	var completeRandomnessChoice int
+	_, err := fmt.Scanln(&completeRandomnessChoice)
+	if err != nil {
+		fmt.Println("--------------------------------------")
+		fmt.Println("Invalid input. Please enter a whole number, for example: 1")
+		fmt.Println("--------------------------------------")
+		fmt.Println()
+		var discard string
+		fmt.Scanln(&discard)
+		return askForCompleteRandomness()
+	}
+	switch completeRandomnessChoice {
+	case 1:
+		return true
+	case 2:
+		return false
+	default:
+		fmt.Println("--------------------------------------")
+		fmt.Println("Invalid input. Please enter 1 or 2")
+		fmt.Println("--------------------------------------")
+		fmt.Println()
+		return askForCompleteRandomness()
+	}
+}
+
 func main() {
 	fmt.Println()
 	fmt.Println("WELCOME TO THE RANDOM BUILD GENERATOR!")
 
-	freeToPlayOnly := askForFreeToPlay()
-	iconicRacesIncluded := askForIconicRace()
-	multiclassChoice := askForMulticlass()
+	var freeToPlayOnly bool
+	var iconicRacesIncluded bool
+	var multiclassChoice int
+
+	completeRandomness := askForCompleteRandomness()
+	if completeRandomness {
+		freeToPlayOnly = false
+		iconicRacesIncluded = true
+		multiclassChoice = rand.IntN(3) + 1 // 1..3
+	} else {
+		freeToPlayOnly = askForFreeToPlay()
+		iconicRacesIncluded = askForIconicRace()
+		multiclassChoice = askForMulticlass()
+
+	}
 	generatedRace := getRandomRace(freeToPlayOnly, iconicRacesIncluded)
 
 	// Generate the output

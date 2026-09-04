@@ -1,2 +1,1 @@
-- add option to generate Eberron or Forgotten Realms
 - add unit tests
