@@ -211,6 +211,8 @@ Priority:
 - The short variable declaration := is a statement, and statements are only allowed inside function bodies in Go.
 - A function can call itself recursively and return that call's result.
 - In Go, write boolean checks directly. Avoid == true and == false when the value is already a boolean.
+- Lowercase identifiers are normally package-private, but tests in the same package can access them
+- ... means all matching packages recursively
 
 # Notes - Programing & Algorithms
 - If intersection is needed, it can be achieved with && logic
