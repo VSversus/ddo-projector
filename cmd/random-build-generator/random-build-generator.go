@@ -15,10 +15,10 @@ type Class struct {
 	Name       string
 	FreeToPlay bool
 	Archetype  string
-	Alignment  Alignment
+	Alignment  CompatibleAlignment
 }
 
-type Alignment struct {
+type CompatibleAlignment struct {
 	LawfulGood     bool
 	LawfulNeutral  bool
 	NeutralGood    bool
@@ -61,31 +61,31 @@ var racesOptions = []Race{
 }
 
 var classesOptions = []Class{
-	{Name: "Fighter", FreeToPlay: true, Archetype: "", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
-	{Name: "Wizard", FreeToPlay: true, Archetype: "", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
-	{Name: "Rogue", FreeToPlay: true, Archetype: "", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
-	{Name: "Cleric", FreeToPlay: true, Archetype: "", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
-	{Name: "Paladin", FreeToPlay: true, Archetype: "", Alignment: Alignment{LawfulGood: true, LawfulNeutral: false, NeutralGood: false, TrueNeutral: false, ChaoticGood: false, ChaoticNeutral: false}},
-	{Name: "Ranger", FreeToPlay: true, Archetype: "", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
-	{Name: "Bard", FreeToPlay: true, Archetype: "", Alignment: Alignment{LawfulGood: false, LawfulNeutral: false, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
-	{Name: "Monk", FreeToPlay: true, Archetype: "", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: false, TrueNeutral: false, ChaoticGood: false, ChaoticNeutral: false}},
-	{Name: "Druid", FreeToPlay: true, Archetype: "", Alignment: Alignment{LawfulGood: false, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: false, ChaoticNeutral: true}},
-	{Name: "Barbarian", FreeToPlay: true, Archetype: "", Alignment: Alignment{LawfulGood: false, LawfulNeutral: false, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
-	{Name: "Sorcerer", FreeToPlay: true, Archetype: "", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
-	{Name: "Warlock", FreeToPlay: true, Archetype: "", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
-	{Name: "Artificer", FreeToPlay: false, Archetype: "", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
-	{Name: "Alchemist", FreeToPlay: false, Archetype: "", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
-	{Name: "Favored Soul", FreeToPlay: false, Archetype: "", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
-	{Name: "Stormsinger", FreeToPlay: true, Archetype: "Bard", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
-	{Name: "Dark Apostate", FreeToPlay: true, Archetype: "Cleric", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
-	{Name: "Sacred Fist", FreeToPlay: true, Archetype: "Paladin", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
-	{Name: "Blightcaster", FreeToPlay: true, Archetype: "Druid", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
-	{Name: "Dark Hunter", FreeToPlay: true, Archetype: "Ranger", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
-	{Name: "Acolyte of the Skin", FreeToPlay: true, Archetype: "Warlock", Alignment: Alignment{LawfulGood: false, LawfulNeutral: true, NeutralGood: false, TrueNeutral: false, ChaoticGood: false, ChaoticNeutral: true}},
-	{Name: "Dragon Lord", FreeToPlay: false, Archetype: "Fighter", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
-	{Name: "Dragon Disciple", FreeToPlay: false, Archetype: "Monk", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
-	{Name: "Arcane Trickster", FreeToPlay: false, Archetype: "Rogue", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
-	{Name: "Wild Mage", FreeToPlay: false, Archetype: "Sorcerer", Alignment: Alignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Fighter", FreeToPlay: true, Archetype: "", Alignment: CompatibleAlignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Wizard", FreeToPlay: true, Archetype: "", Alignment: CompatibleAlignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Rogue", FreeToPlay: true, Archetype: "", Alignment: CompatibleAlignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Cleric", FreeToPlay: true, Archetype: "", Alignment: CompatibleAlignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Paladin", FreeToPlay: true, Archetype: "", Alignment: CompatibleAlignment{LawfulGood: true, LawfulNeutral: false, NeutralGood: false, TrueNeutral: false, ChaoticGood: false, ChaoticNeutral: false}},
+	{Name: "Ranger", FreeToPlay: true, Archetype: "", Alignment: CompatibleAlignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Bard", FreeToPlay: true, Archetype: "", Alignment: CompatibleAlignment{LawfulGood: false, LawfulNeutral: false, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Monk", FreeToPlay: true, Archetype: "", Alignment: CompatibleAlignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: false, TrueNeutral: false, ChaoticGood: false, ChaoticNeutral: false}},
+	{Name: "Druid", FreeToPlay: true, Archetype: "", Alignment: CompatibleAlignment{LawfulGood: false, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: false, ChaoticNeutral: true}},
+	{Name: "Barbarian", FreeToPlay: true, Archetype: "", Alignment: CompatibleAlignment{LawfulGood: false, LawfulNeutral: false, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Sorcerer", FreeToPlay: true, Archetype: "", Alignment: CompatibleAlignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Warlock", FreeToPlay: true, Archetype: "", Alignment: CompatibleAlignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Artificer", FreeToPlay: false, Archetype: "", Alignment: CompatibleAlignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Alchemist", FreeToPlay: false, Archetype: "", Alignment: CompatibleAlignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Favored Soul", FreeToPlay: false, Archetype: "", Alignment: CompatibleAlignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Stormsinger", FreeToPlay: true, Archetype: "Bard", Alignment: CompatibleAlignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Dark Apostate", FreeToPlay: true, Archetype: "Cleric", Alignment: CompatibleAlignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Sacred Fist", FreeToPlay: true, Archetype: "Paladin", Alignment: CompatibleAlignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Blightcaster", FreeToPlay: true, Archetype: "Druid", Alignment: CompatibleAlignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Dark Hunter", FreeToPlay: true, Archetype: "Ranger", Alignment: CompatibleAlignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Acolyte of the Skin", FreeToPlay: true, Archetype: "Warlock", Alignment: CompatibleAlignment{LawfulGood: false, LawfulNeutral: true, NeutralGood: false, TrueNeutral: false, ChaoticGood: false, ChaoticNeutral: true}},
+	{Name: "Dragon Lord", FreeToPlay: false, Archetype: "Fighter", Alignment: CompatibleAlignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Dragon Disciple", FreeToPlay: false, Archetype: "Monk", Alignment: CompatibleAlignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Arcane Trickster", FreeToPlay: false, Archetype: "Rogue", Alignment: CompatibleAlignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
+	{Name: "Wild Mage", FreeToPlay: false, Archetype: "Sorcerer", Alignment: CompatibleAlignment{LawfulGood: true, LawfulNeutral: true, NeutralGood: true, TrueNeutral: true, ChaoticGood: true, ChaoticNeutral: true}},
 }
 
 func getFreeToPlayRacesOnly(items []Race) []Race {
@@ -118,7 +118,7 @@ func filterClassesByFreeToPlay(items []Class, wantFree bool) []Class {
 	return out
 }
 
-func isAlignmentCompatible(candidateAlignment Alignment, selectedAlignments []Alignment) bool {
+func isAlignmentCompatible(candidateAlignment CompatibleAlignment, selectedAlignments []CompatibleAlignment) bool {
 	compatible := candidateAlignment
 
 	for _, selected := range selectedAlignments {
@@ -158,7 +158,7 @@ func getRandomClass(availableClasses []Class) string {
 
 func canAddClass(selectedClasses []string, candidateClassName string) bool {
 	// get archetype and alignments of candidate class
-	candidateAlignments := Alignment{}
+	candidateAlignments := CompatibleAlignment{}
 	candidateArchetype := ""
 	for _, class := range classesOptions {
 		if class.Name == candidateClassName {
@@ -169,7 +169,7 @@ func canAddClass(selectedClasses []string, candidateClassName string) bool {
 	}
 
 	// get all alignments of the already selected classes
-	selectedAlignments := []Alignment{}
+	selectedAlignments := []CompatibleAlignment{}
 	for _, selected := range selectedClasses {
 		for _, class := range classesOptions {
 			if class.Name == selected {

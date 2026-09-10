@@ -213,9 +213,11 @@ Priority:
 - In Go, write boolean checks directly. Avoid == true and == false when the value is already a boolean.
 - Lowercase identifiers are normally package-private, but tests in the same package can access them
 - ... means all matching packages recursively
+- In Go, when you create a struct with named fields, any field you leave out gets the zero value automatically, so omitted bools become false.
 
 # Notes - Programing & Algorithms
 - If intersection is needed, it can be achieved with && logic
 
 # Notes - VsCode
 - Ctrl+P quick open
+- Go to definition with "F12" or "ctrl+Click"
