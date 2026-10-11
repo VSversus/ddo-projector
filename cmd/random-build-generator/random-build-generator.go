@@ -138,8 +138,8 @@ func isAlignmentCompatible(candidateAlignment CompatibleAlignment, selectedAlign
 		compatible.ChaoticNeutral
 }
 
-func getRandomRace(freeToPlay bool, iconicIncluded bool) string {
-	pool := racesOptions
+func getAvailableRaces(racePool []Race, freeToPlay bool, iconicIncluded bool) []Race {
+	pool := racePool
 
 	if freeToPlay {
 		pool = getFreeToPlayRacesOnly(pool)
@@ -148,6 +148,11 @@ func getRandomRace(freeToPlay bool, iconicIncluded bool) string {
 		pool = removeIconicRaces(pool)
 	}
 
+	return pool
+}
+
+func getRandomRace(racePool []Race, freeToPlay bool, iconicIncluded bool) string {
+	pool := getAvailableRaces(racePool, freeToPlay, iconicIncluded)
 	return pool[rand.IntN(len(pool))].Name
 }
 
@@ -402,7 +407,7 @@ func main() {
 		multiclassChoice = askForMulticlass()
 
 	}
-	generatedRace := getRandomRace(freeToPlayOnly, iconicRacesIncluded)
+	generatedRace := getRandomRace(racesOptions, freeToPlayOnly, iconicRacesIncluded)
 
 	// Generate the output
 	fmt.Println()
